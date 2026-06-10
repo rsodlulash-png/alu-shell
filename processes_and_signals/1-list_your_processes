@@ -1,0 +1,3 @@
+#!/usr/bin/env bash 
+#Displying all currently running processes
+ps aux 
