@@ -1,31 +1,8 @@
 #!/usr/bin/env bash
-#Manage the process 2
-PID_FILE="/var/run/my_process.pid"
+# Writes "I am alive!" indefinitely to /tmp/my_process
 
-case "$1" in
-    start)
-        ./manage_my_process &
-        echo $! > "$PID_FILE"
-        echo "manage_my_process started"
-        ;;
-
-    stop)
-        kill "$(cat "$PID_FILE")"
-        rm -f "$PID_FILE"
-        echo "manage_my_process stopped"
-        ;;
-
-    restart)
-        kill "$(cat "$PID_FILE")"
-        rm -f "$PID_FILE"
-
-        ./manage_my_process &
-        echo $! > "$PID_FILE"
-
-        echo "manage_my_process restarted"
-        ;;
-
-    *)
-        echo "Usage: manage_my_process {start|stop|restart}"
-        ;;
-esac
+while true
+do
+    echo "I am alive!" >> /tmp/my_process
+    sleep 2
+done
